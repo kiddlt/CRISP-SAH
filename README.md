@@ -19,7 +19,7 @@ This module is designed to be used as part of the larger CRISP‑SAH pipeline, w
 
 ## 🧩 File Overview
 
-- `crisp_sah/trainer.py` – Contains the `nnUNetTrainer` class that inherits from the nnU‑Net v2 trainer and adds CRISP‑SAH‑specific adaptations (if any).
+- `crisp_sah/nnUNetTrainer.py` – Contains the `nnUNetTrainer` class that inherits from the nnU‑Net v2 trainer and adds CRISP‑SAH‑specific adaptations (if any).
 - The class is fully compatible with the nnU‑Net data structure and configuration files (`plans.json`, `dataset.json`, etc.).
 
 
@@ -34,7 +34,7 @@ The code requires the following Python packages (see `requirements.txt` for full
 - `numpy`, `scipy`, `pandas`
 - `scikit‑learn`, `matplotlib`, `shap`
 
-All dependencies are automatically installed with the main CRISP‑SAH installation.
+All dependencies are automatically installed with the main CRISP‑SAH installation. The model:https://github.com/kiddlt/CRISP-SAH/releases/download/model/checkpoint_final.pth
 
 
 
@@ -45,7 +45,7 @@ All dependencies are automatically installed with the main CRISP‑SAH installat
 To train a model using this trainer, you need a **nnU‑Net dataset** (preprocessed with `nnUNetv2_plan_and_preprocess`). Then run:
 
 ```
-python -m nnunetv2.training.run_training \
+python -m nnUNetTrainer.run_training \
     --dataset_name DATASET_NAME \
     --configuration CONFIG \
     --fold FOLD \
@@ -54,7 +54,7 @@ Replace DATASET_NAME, CONFIG (e.g., 2d, 3d_fullres), and FOLD (0‑4 or all) acc
 ```
 ### Continuing training from a checkpoint
 ```
-python -m nnunetv2.training.run_training \
+python -m nnUNetTrainer.run_training \
     --dataset_name DATASET_NAME \
     --configuration CONFIG \
     --fold FOLD \
@@ -64,7 +64,7 @@ python -m nnunetv2.training.run_training \
     
 ###  Running validation only
 ```
-python -m nnunetv2.training.run_training \
+python -m nnUNetTrainer.run_training \
     --dataset_name DATASET_NAME \
     --configuration CONFIG \
     --fold FOLD \
